@@ -12,7 +12,7 @@ module.exports=async (req, res) => {
         });
         return;
       }
-      const isPasswordSame = bcrypt.compare(password, user.password);
+      const isPasswordSame = await bcrypt.compare(password, user.password);
       if (isPasswordSame) {
         const token = jwt.sign({ userId: user.id }, "qazwsxplmokn", {
           expiresIn: "5h",
